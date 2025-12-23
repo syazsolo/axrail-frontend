@@ -49,3 +49,26 @@ body {
 .animate-pulse-slow {
   animation: pulse 2s ease-in-out infinite;
 }
+
+/* Custom Scrollbar for Dialog */
+.dialog-scrollbar {
+  scrollbar-width: auto;
+  scrollbar-color: #41414199 transparent;
+}
+
+.dialog-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.dialog-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.dialog-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #c4c4c4;
+  border-radius: 3px;
+}
+
+.dialog-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: #a3a3a3;
+}
