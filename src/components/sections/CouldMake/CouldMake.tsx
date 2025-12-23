@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 
+import { EarningsInfoDialog } from '../../ui/EarningsInfoDialog';
 import { NightsSlider } from '../../ui/NightsSlider';
 import { RollingNumber } from '../../ui/RollingNumber';
 import { cn } from '../../../lib/utils';
@@ -22,6 +23,7 @@ const SearchIcon = () => (
 export const CouldMake = () => {
   const [nights, setNights] = useState(7);
   const [isDragging, setIsDragging] = useState(false);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
   const nightlyRate = 52;
 
   // Displayed earnings that only updates when dragging is done
@@ -76,9 +78,13 @@ export const CouldMake = () => {
               </p>
 
               {/* Learn how link */}
-              <p className="mb-6 text-base">
-                <button className="text-text-dark hover:text-text-muted cursor-pointer underline decoration-1 underline-offset-2">
-                  Learn how we estimate earnings
+              <p className="text-text-muted mb-6 text-base">
+                Learn how we{' '}
+                <button
+                  onClick={() => setIsDialogOpen(true)}
+                  className="text-text-dark hover:text-text-muted cursor-pointer underline decoration-1 underline-offset-2"
+                >
+                  estimate earnings
                 </button>
               </p>
             </div>
@@ -90,7 +96,7 @@ export const CouldMake = () => {
               onDragChange={setIsDragging}
               min={1}
               max={30}
-              className="mb-8"
+              className="mt-2 mb-8"
             />
 
             {/* Search input */}
@@ -167,6 +173,12 @@ export const CouldMake = () => {
           </div>
         </div>
       </div>
+
+      {/* Earnings Info Dialog */}
+      <EarningsInfoDialog
+        isOpen={isDialogOpen}
+        onClose={() => setIsDialogOpen(false)}
+      />
     </section>
   );
 };

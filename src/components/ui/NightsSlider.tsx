@@ -21,6 +21,7 @@ export const NightsSlider = ({
 }: NightsSliderProps) => {
   const [isDragging, setIsDragging] = useState(false);
   const [showPopover, setShowPopover] = useState(false);
+  const [isHovering, setIsHovering] = useState(false);
   const sliderRef = useRef<HTMLInputElement>(null);
   const popoverRef = useRef<HTMLDivElement>(null);
 
@@ -64,19 +65,18 @@ export const NightsSlider = ({
   const handleMouseUp = () => {
     setIsDragging(false);
     onDragChange?.(false);
-    // Keep popover visible briefly after release
-    setTimeout(() => {
-      if (!isDragging) {
-        setShowPopover(false);
-      }
-    }, 300);
+    if (!isHovering) {
+      setShowPopover(false);
+    }
   };
 
   const handleMouseEnter = () => {
+    setIsHovering(true);
     setShowPopover(true);
   };
 
   const handleMouseLeave = () => {
+    setIsHovering(false);
     if (!isDragging) {
       setShowPopover(false);
     }
@@ -85,7 +85,10 @@ export const NightsSlider = ({
   useEffect(() => {
     const handleGlobalMouseUp = () => {
       setIsDragging(false);
-      setTimeout(() => setShowPopover(false), 300);
+      onDragChange?.(false);
+      if (!isHovering) {
+        setShowPopover(false);
+      }
     };
 
     if (isDragging) {
@@ -97,7 +100,7 @@ export const NightsSlider = ({
       window.removeEventListener('mouseup', handleGlobalMouseUp);
       window.removeEventListener('touchend', handleGlobalMouseUp);
     };
-  }, [isDragging]);
+  }, [isDragging, isHovering, onDragChange]);
 
   return (
     <div className={cn('relative', className)}>
