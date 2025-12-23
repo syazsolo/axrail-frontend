@@ -1,5 +1,7 @@
 import { useState } from 'react';
 
+import { cn } from '../../../lib/utils';
+
 interface Category {
   id: string;
   label: string;
@@ -102,11 +104,12 @@ export const QnA = () => {
           {categories.map((category) => (
             <button
               key={category.id}
-              className={`rounded-full px-5 py-3 text-sm font-medium transition-all ${
+              className={cn(
+                'rounded-full px-5 py-3 text-sm font-medium transition-all',
                 activeCategory === category.id
                   ? 'bg-white text-[var(--color-text-dark)] shadow-sm'
-                  : 'text-[var(--color-text-muted)] hover:bg-white hover:text-[var(--color-text-dark)]'
-              }`}
+                  : 'text-[var(--color-text-muted)] hover:bg-white hover:text-[var(--color-text-dark)]',
+              )}
               onClick={() => setActiveCategory(category.id)}
               role="tab"
               aria-selected={activeCategory === category.id}
@@ -121,11 +124,10 @@ export const QnA = () => {
           {filteredFAQs.map((item, index) => (
             <div
               key={item.id}
-              className={`${
-                index !== filteredFAQs.length - 1
-                  ? 'border-b border-[var(--color-border-light)]'
-                  : ''
-              }`}
+              className={cn(
+                index !== filteredFAQs.length - 1 &&
+                  'border-b border-[var(--color-border-light)]',
+              )}
             >
               <button
                 className="flex w-full items-center justify-between p-6 text-left text-lg font-medium text-[var(--color-text-dark)] transition-colors hover:bg-[var(--color-bg-light)]"
@@ -134,17 +136,19 @@ export const QnA = () => {
               >
                 <span>{item.question}</span>
                 <span
-                  className={`flex h-6 w-6 flex-shrink-0 items-center justify-center text-2xl font-normal text-[var(--color-text-muted)] transition-transform duration-300 ${
-                    openItems.includes(item.id) ? 'rotate-45' : ''
-                  }`}
+                  className={cn(
+                    'flex h-6 w-6 flex-shrink-0 items-center justify-center text-2xl font-normal text-[var(--color-text-muted)] transition-transform duration-300',
+                    openItems.includes(item.id) && 'rotate-45',
+                  )}
                 >
                   +
                 </span>
               </button>
               <div
-                className={`overflow-hidden transition-all duration-300 ${
-                  openItems.includes(item.id) ? 'max-h-96' : 'max-h-0'
-                }`}
+                className={cn(
+                  'overflow-hidden transition-all duration-300',
+                  openItems.includes(item.id) ? 'max-h-96' : 'max-h-0',
+                )}
               >
                 <p className="px-6 pb-6 text-base leading-relaxed text-[var(--color-text-muted)]">
                   {item.answer}

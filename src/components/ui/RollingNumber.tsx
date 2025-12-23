@@ -1,5 +1,7 @@
 import { motion } from 'framer-motion';
 
+import { cn } from '../../lib/utils';
+
 // Generate array [0, 1, ... 9]
 const NUMBERS = Array.from({ length: 10 }, (_, i) => i);
 
@@ -80,7 +82,7 @@ export const RollingNumber = ({
 
   return (
     <div
-      className={`inline-flex items-center ${className}`}
+      className={cn('inline-flex items-center', className)}
       // tabular-nums is mandatory for this to align perfectly
       style={{ fontVariantNumeric: 'tabular-nums' }}
     >

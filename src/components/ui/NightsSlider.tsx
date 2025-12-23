@@ -1,5 +1,7 @@
 import { useMemo, useState, useRef, useEffect } from 'react';
 
+import { cn } from '../../lib/utils';
+
 interface NightsSliderProps {
   value: number;
   onChange: (value: number) => void;
@@ -98,13 +100,14 @@ export const NightsSlider = ({
   }, [isDragging]);
 
   return (
-    <div className={`relative ${className}`}>
+    <div className={cn('relative', className)}>
       {/* Popover */}
       <div
         ref={popoverRef}
-        className={`absolute -top-10 z-10 rounded-full bg-[#222] px-4 py-2 text-sm font-medium whitespace-nowrap text-white shadow-lg transition-opacity duration-150 ${
-          showPopover ? 'opacity-100' : 'pointer-events-none opacity-0'
-        }`}
+        className={cn(
+          'absolute -top-10 z-10 rounded-full bg-[#222] px-4 py-2 text-sm font-medium whitespace-nowrap text-white shadow-lg transition-opacity duration-150',
+          showPopover ? 'opacity-100' : 'pointer-events-none opacity-0',
+        )}
         style={getPopoverStyle}
       >
         {value} {nightLabel}

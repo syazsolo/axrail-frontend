@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 
+import { cn } from '../../../lib/utils';
 import { NightsSlider } from '../../ui/NightsSlider';
 import { RollingNumber } from '../../ui/RollingNumber';
 
@@ -61,7 +62,10 @@ export const CouldMake = () => {
 
             {/* Nights and rate info - hidden while dragging */}
             <div
-              className={`transition-opacity duration-150 ${isDragging ? 'opacity-0' : 'opacity-100'}`}
+              className={cn(
+                'transition-opacity duration-150',
+                isDragging ? 'opacity-0' : 'opacity-100',
+              )}
             >
               <p className="text-text-dark mb-1 text-base">
                 <button className="hover:text-text-muted cursor-pointer underline decoration-1 underline-offset-2">
