@@ -3,6 +3,7 @@ import { useMemo, useState, useRef, useEffect } from 'react';
 interface NightsSliderProps {
   value: number;
   onChange: (value: number) => void;
+  onDragChange?: (isDragging: boolean) => void;
   min?: number;
   max?: number;
   className?: string;
@@ -11,6 +12,7 @@ interface NightsSliderProps {
 export const NightsSlider = ({
   value,
   onChange,
+  onDragChange,
   min = 1,
   max = 30,
   className = '',
@@ -54,10 +56,12 @@ export const NightsSlider = ({
   const handleMouseDown = () => {
     setIsDragging(true);
     setShowPopover(true);
+    onDragChange?.(true);
   };
 
   const handleMouseUp = () => {
     setIsDragging(false);
+    onDragChange?.(false);
     // Keep popover visible briefly after release
     setTimeout(() => {
       if (!isDragging) {

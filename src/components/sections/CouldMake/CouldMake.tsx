@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { NightsSlider } from '../../ui/NightsSlider';
 import { RollingNumber } from '../../ui/RollingNumber';
@@ -23,9 +23,15 @@ export const CouldMake = () => {
   const [isDragging, setIsDragging] = useState(false);
   const nightlyRate = 52;
 
-  const estimatedEarnings = useMemo(() => {
-    return nights * nightlyRate;
-  }, [nights]);
+  // Displayed earnings that only updates when dragging is done
+  const [displayedEarnings, setDisplayedEarnings] = useState(7 * nightlyRate);
+
+  // Update displayed earnings only when dragging ends
+  useEffect(() => {
+    if (!isDragging) {
+      setDisplayedEarnings(nights * nightlyRate);
+    }
+  }, [isDragging, nights, nightlyRate]);
 
   const formatCurrency = (amount: number) => {
     return new Intl.NumberFormat('en-US', {
@@ -49,7 +55,7 @@ export const CouldMake = () => {
           {/* Left Content */}
           <div className="mx-auto max-w-xl text-center lg:max-w-lg">
             <h1 className="mb-6 text-[40px] leading-[1.1] font-bold tracking-tight md:text-5xl lg:text-[3.5rem]">
-              Your home could make <RollingNumber value={estimatedEarnings} />{' '}
+              Your home could make <RollingNumber value={displayedEarnings} />{' '}
               on Airbnb
             </h1>
 
