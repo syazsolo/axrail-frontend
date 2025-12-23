@@ -23,7 +23,7 @@ const RollingDigit = ({ digit }: RollingDigitProps) => {
         // Define the visible window height
         height: '1em',
         // '1ch' usually matches the width of a number in monospace/tabular fonts
-        width: '1ch',
+        width: '0.9ch',
         verticalAlign: 'top', // Align with neighboring text
       }}
     >
