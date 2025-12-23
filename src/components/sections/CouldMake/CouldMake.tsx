@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 
-import { cn } from '../../../lib/utils';
 import { NightsSlider } from '../../ui/NightsSlider';
 import { RollingNumber } from '../../ui/RollingNumber';
+import { cn } from '../../../lib/utils';
 
 const SearchIcon = () => (
   <svg

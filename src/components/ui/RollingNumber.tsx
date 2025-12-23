@@ -1,6 +1,5 @@
-import { motion } from 'framer-motion';
-
 import { cn } from '../../lib/utils';
+import { motion } from 'framer-motion';
 
 // Generate array [0, 1, ... 9]
 const NUMBERS = Array.from({ length: 10 }, (_, i) => i);

@@ -1,4 +1,4 @@
-import { useMemo, useState, useRef, useEffect } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 
 import { cn } from '../../lib/utils';
 
@@ -105,7 +105,7 @@ export const NightsSlider = ({
       <div
         ref={popoverRef}
         className={cn(
-          'absolute -top-10 z-10 rounded-full bg-[#222] px-4 py-2 text-sm font-medium whitespace-nowrap text-white shadow-lg transition-opacity duration-150',
+          'absolute -top-18 z-10 rounded-full bg-[#222] px-4 py-2 text-base font-medium whitespace-nowrap text-white shadow-lg transition-opacity duration-150',
           showPopover ? 'opacity-100' : 'pointer-events-none opacity-0',
         )}
         style={getPopoverStyle}
