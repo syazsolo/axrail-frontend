@@ -5,9 +5,9 @@ import { NightsSlider } from '../../ui/NightsSlider';
 import { RollingNumber } from '../../ui/RollingNumber';
 import { cn } from '../../../lib/utils';
 
-const SearchIcon = () => (
+const SearchIcon = ({ className }: { className?: string }) => (
   <svg
-    className="text-primary h-5 w-5 shrink-0"
+    className={cn('h-5 w-5 shrink-0', className)}
     viewBox="0 0 24 24"
     fill="none"
     stroke="currentColor"
@@ -50,14 +50,14 @@ export const CouldMake = () => {
 
   return (
     <section
-      className="flex min-h-[calc(100vh-80px)] items-center overflow-hidden bg-white py-8"
+      className="flex min-h-[calc(100vh-80px)] items-center overflow-hidden bg-white py-4"
       id="get-started"
     >
       <div className="container mx-auto max-w-7xl px-6">
-        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
+        <div className="grid grid-cols-1 items-center gap-6 lg:grid-cols-2 lg:gap-16">
           {/* Left Content */}
           <div className="mx-auto max-w-xl text-center lg:max-w-lg">
-            <h1 className="mb-6 text-[40px] leading-[1.1] font-bold tracking-tight md:text-5xl lg:text-[3.5rem]">
+            <h1 className="mb-6 text-[2.6rem] leading-[1.1] font-bold tracking-tight md:text-5xl lg:text-[3.5rem]">
               Your home could make{' '}
               <RollingNumber value={displayedEarnings} prefix="RM" /> on Airbnb
             </h1>
@@ -79,7 +79,7 @@ export const CouldMake = () => {
               </p>
 
               {/* Learn how link */}
-              <p className="text-text-muted mb-6 text-base">
+              <p className="text-text-muted mb-6 text-[14px]">
                 Learn how we{' '}
                 <button
                   onClick={() => setIsDialogOpen(true)}
@@ -97,20 +97,25 @@ export const CouldMake = () => {
               onDragChange={setIsDragging}
               min={1}
               max={30}
-              className="mt-2 mb-8"
+              className="mt-12 mb-8"
             />
 
-            {/* Search input */}
-            <div className="inline-flex items-center gap-3 rounded-full border border-[#ddd] bg-white px-5 py-3.5 shadow-sm">
-              <SearchIcon />
-              <span className="text-text-dark text-[15px]">
-                Kuala Lumpur · Entire place · 2 bedrooms
-              </span>
+            {/* TODO - do the price guesser code */}
+            <div className="flex w-full cursor-pointer items-center gap-2 rounded-full border border-[#ddd] bg-white px-5 py-3 text-left transition-shadow hover:shadow-md">
+              <SearchIcon className="text-[#DE1360]" />
+              <div className="flex flex-col">
+                <span className="text-text-dark text-[15px] leading-tight font-bold">
+                  Kuala Lumpur
+                </span>
+                <span className="text-text-muted text-[14px] leading-tight">
+                  Entire place · 2 bedrooms
+                </span>
+              </div>
             </div>
           </div>
 
           {/* Right: Map Placeholder */}
-          <div className="relative flex h-100 w-full items-center justify-center overflow-hidden rounded-2xl bg-[#f0f0f0] shadow-sm lg:h-130">
+          <div className="relative flex h-100 w-full items-center justify-center overflow-hidden rounded-2xl bg-[#f0f0f0] shadow-lg lg:h-130">
             {/* Price Pins */}
             <div className="pointer-events-none absolute inset-0">
               <span className="text-text-dark absolute top-[18%] left-[22%] rounded-full bg-white px-2.5 py-1.5 text-sm font-semibold shadow-md">
