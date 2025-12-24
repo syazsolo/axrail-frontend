@@ -6,10 +6,7 @@ import Footer from '@/components/layout/Footer';
 import MicroFooter from '@/components/sections/MicroFooter';
 // Layout components
 import Navbar from '@/components/layout/Navbar';
-import NotJustHomeowners from '@/components/sections/NotJustHomeowners';
 import QnA from '@/components/sections/QnA';
-import Tools from '@/components/sections/Tools';
-import YoureProtected from '@/components/sections/YoureProtected';
 
 function App() {
   return (
