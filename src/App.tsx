@@ -19,11 +19,11 @@ function App() {
         <CouldMake />
         <EasyToList />
         <CoHost />
-        <YoureProtected />
-        <Tools />
-        <NotJustHomeowners />
-        <QnA />
-        <MicroFooter />
+        {/* <YoureProtected /> */}
+        {/* <Tools /> */}
+        {/* <NotJustHomeowners /> */}
+        {/* <QnA /> */}
+        {/* <MicroFooter /> */}
       </main>
       <Footer />
     </div>
