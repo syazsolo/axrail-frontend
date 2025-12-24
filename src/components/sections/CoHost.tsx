@@ -5,7 +5,6 @@ interface CoHostPerson {
   location: string;
   rating: number;
   yearsHosting: number;
-  ringColor: string;
 }
 
 const coHosts: CoHostPerson[] = [
@@ -17,7 +16,6 @@ const coHosts: CoHostPerson[] = [
     location: 'North Charleston, USA',
     rating: 4.98,
     yearsHosting: 3,
-    ringColor: '#C4A000',
   },
   {
     id: 2,
@@ -27,7 +25,6 @@ const coHosts: CoHostPerson[] = [
     location: 'Los Angeles, USA',
     rating: 4.94,
     yearsHosting: 5,
-    ringColor: '#D4A574',
   },
   {
     id: 3,
@@ -37,7 +34,6 @@ const coHosts: CoHostPerson[] = [
     location: 'Temple, USA',
     rating: 4.98,
     yearsHosting: 4,
-    ringColor: '#8B7355',
   },
   {
     id: 4,
@@ -47,7 +43,6 @@ const coHosts: CoHostPerson[] = [
     location: 'Toronto, Canada',
     rating: 4.95,
     yearsHosting: 9,
-    ringColor: '#A0522D',
   },
   {
     id: 5,
@@ -57,7 +52,6 @@ const coHosts: CoHostPerson[] = [
     location: 'La Quinta, USA',
     rating: 4.96,
     yearsHosting: 4,
-    ringColor: '#87CEEB',
   },
 ];
 
@@ -67,53 +61,49 @@ const StarIcon = () => (
     height="12"
     viewBox="0 0 12 12"
     fill="currentColor"
-    className="flex-shrink-0"
+    className="shrink-0"
   >
     <path d="M6 0l1.854 3.756 4.146.603-3 2.923.708 4.128L6 9.187l-3.708 1.95.708-4.127-3-2.924 4.146-.602L6 0z" />
   </svg>
 );
 
 const CoHostCard = ({ host }: { host: CoHostPerson }) => (
-  <article className="flex h-full flex-col items-center rounded-xl border border-gray-100 bg-[#FAFAFA] p-5 md:rounded-2xl md:p-6">
+  <article className="bg-bg-light flex h-full flex-col items-center rounded-3xl border border-gray-200 p-6 shadow-[2px_8px_16px_rgba(0,0,0,0.2)] md:p-8">
     {/* Profile Image with Ring */}
-    <div
-      className="mb-4 rounded-full p-0.5 md:p-1"
-      style={{ backgroundColor: host.ringColor }}
-    >
+    <div className="mb-1 rounded-full p-1 md:mb-6 md:p-1.5">
       <img
         src={host.image}
         alt={host.name}
-        className="h-20 w-20 rounded-full object-cover sm:h-24 sm:w-24 md:h-28 md:w-28"
+        className="h-28 w-28 rounded-full object-cover sm:h-28 sm:w-28 md:h-32 md:w-32"
       />
     </div>
 
     {/* Name */}
-    <h3 className="mb-1 text-lg font-semibold text-gray-900 md:text-xl">
+    <h3 className="mb-1 text-xl font-bold text-gray-900 md:text-2xl">
       {host.name}
     </h3>
 
     {/* Location */}
-    <p className="mb-4 text-center text-xs text-gray-500 md:text-sm">
+    <p className="mb-5 text-center text-sm text-gray-500 md:mb-6 md:text-base">
       Co-host in {host.location}
     </p>
 
+    {/* Divider */}
+    <div className="mb-4 w-full border-t border-gray-200 md:mb-5" />
+
     {/* Stats */}
-    <div className="mt-auto flex w-full items-center justify-center gap-3 text-xs md:gap-4 md:text-sm">
+    <div className="mt-auto flex w-full items-center justify-center gap-4 text-sm md:gap-6 md:text-base">
       <div className="flex flex-col items-center">
-        <div className="flex items-center gap-1 font-medium text-gray-900">
+        <div className="flex items-center gap-1 font-semibold text-gray-900">
           <StarIcon />
           <span>{host.rating.toFixed(2)}</span>
         </div>
-        <span className="text-[10px] text-gray-500 md:text-xs">
-          guest rating
-        </span>
+        <span className="text-xs text-gray-500 md:text-sm">guest rating</span>
       </div>
-      <div className="h-6 w-px bg-gray-200 md:h-8" />
+      <div className="h-8 w-px bg-gray-200 md:h-10" />
       <div className="flex flex-col items-center">
-        <span className="font-medium text-gray-900">{host.yearsHosting}</span>
-        <span className="text-[10px] text-gray-500 md:text-xs">
-          years hosting
-        </span>
+        <span className="font-semibold text-gray-900">{host.yearsHosting}</span>
+        <span className="text-xs text-gray-500 md:text-sm">years hosting</span>
       </div>
     </div>
   </article>
@@ -177,7 +167,7 @@ export const CoHost = () => {
         <div className="relative left-1/2 w-[115vw] -translate-x-1/2">
           <div className="flex justify-center gap-6">
             {coHosts.map((host) => (
-              <div key={host.id} className="w-[220px] flex-shrink-0">
+              <div key={host.id} className="w-100 shrink-0">
                 <CoHostCard host={host} />
               </div>
             ))}
