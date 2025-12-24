@@ -57,7 +57,7 @@ export const CouldMake = () => {
         <div className="grid grid-cols-1 items-center gap-6 lg:grid-cols-2 lg:gap-16">
           {/* Left Content */}
           <div className="mx-auto max-w-xl text-center lg:max-w-lg">
-            <h1 className="text-title mb-6 text-[2.7rem]!">
+            <h1 className="text-title mb-6 text-[2.7rem]! md:text-[3.75rem]!">
               Your home could make{' '}
               <RollingNumber value={displayedEarnings} prefix="RM" /> on Airbnb
             </h1>
