@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 
-import { cn } from '../../lib/utils';
+import { cn } from '@/lib/utils';
 
 // Slider knob size in Tailwind units (10 = 2.5rem = 40px)
 // Adjust this value to change the slider thumb size

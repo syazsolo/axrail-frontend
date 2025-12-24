@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 
-import { EarningsInfoDialog } from '../ui/EarningsInfoDialog';
-import { NightsSlider } from '../ui/NightsSlider';
-import { RollingNumber } from '../ui/RollingNumber';
-import { cn } from '../../lib/utils';
+import { EarningsInfoDialog } from '@/components/ui/EarningsInfoDialog';
+import { NightsSlider } from '@/components/ui/NightsSlider';
+import { RollingNumber } from '@/components/ui/RollingNumber';
+import { cn } from '@/lib/utils';
 
 const SearchIcon = ({ className }: { className?: string }) => (
   <svg

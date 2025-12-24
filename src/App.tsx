@@ -1,15 +1,15 @@
-import CoHost from './components/sections/CoHost';
+import CoHost from '@/components/sections/CoHost';
 // Section components
-import CouldMake from './components/sections/CouldMake';
-import EasyToList from './components/sections/EasyToList';
-import Footer from './components/layout/Footer';
-import MicroFooter from './components/sections/MicroFooter';
+import CouldMake from '@/components/sections/CouldMake';
+import EasyToList from '@/components/sections/EasyToList';
+import Footer from '@/components/layout/Footer';
+import MicroFooter from '@/components/sections/MicroFooter';
 // Layout components
-import Navbar from './components/layout/Navbar';
-import NotJustHomeowners from './components/sections/NotJustHomeowners';
-import QnA from './components/sections/QnA';
-import Tools from './components/sections/Tools';
-import YoureProtected from './components/sections/YoureProtected';
+import Navbar from '@/components/layout/Navbar';
+import NotJustHomeowners from '@/components/sections/NotJustHomeowners';
+import QnA from '@/components/sections/QnA';
+import Tools from '@/components/sections/Tools';
+import YoureProtected from '@/components/sections/YoureProtected';
 
 function App() {
   return (

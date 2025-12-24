@@ -1,4 +1,4 @@
-import { cn } from '../../lib/utils';
+import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
 
 // Generate array [0, 1, ... 9]

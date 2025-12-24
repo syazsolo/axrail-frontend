@@ -1,4 +1,4 @@
-import { cn } from '../../../lib/utils';
+import { cn } from '@/lib/utils';
 import { useState } from 'react';
 
 interface Category {
@@ -90,9 +90,7 @@ export const QnA = () => {
     <section className="bg-[var(--color-bg-light)] py-20 md:py-24">
       <div className="container mx-auto max-w-7xl px-6">
         <header className="mb-12 text-center">
-          <h2 className="text-title mb-6">
-            Your questions, answered
-          </h2>
+          <h2 className="text-title mb-6">Your questions, answered</h2>
         </header>
 
         {/* Category Tabs */}
