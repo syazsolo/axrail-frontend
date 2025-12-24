@@ -22,7 +22,7 @@ function App() {
         {/* <YoureProtected /> */}
         {/* <Tools /> */}
         {/* <NotJustHomeowners /> */}
-        {/* <QnA /> */}
+        <QnA />
         <MicroFooter />
       </main>
       <Footer />
