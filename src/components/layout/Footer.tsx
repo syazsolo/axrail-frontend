@@ -139,7 +139,7 @@ export const Footer = () => {
                 🌐 English (US)
               </button>
               <button className="flex items-center gap-1 rounded-lg p-2 text-sm font-medium text-[var(--color-text-dark)] transition-colors hover:bg-white">
-                $ USD
+                RM MYR
               </button>
             </div>
             <a

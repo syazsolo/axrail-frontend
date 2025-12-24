@@ -15,8 +15,8 @@ const CheckIcon = () => (
 const benefits = [
   { text: 'Guest identity verification', highlight: null },
   { text: 'Reservation screening', highlight: null },
-  { text: '$3M damage protection', highlight: '$3M' },
-  { text: '$1M liability insurance', highlight: '$1M' },
+  { text: 'RM3M damage protection', highlight: 'RM3M' },
+  { text: 'RM1M liability insurance', highlight: 'RM1M' },
   { text: '24-hour safety line', highlight: '24-hour' },
 ];
 
@@ -43,7 +43,7 @@ export const YoureProtected = () => {
 
             <p className="mb-8 text-lg leading-relaxed text-[var(--color-text-muted)]">
               Airbnb is the only platform to include free, top-to-bottom
-              protection for Hosts. Get $3M damage protection for your home and
+              protection for Hosts. Get RM3M damage protection for your home and
               belongings, liability coverage for guest injury, and more—all free
               of charge.
             </p>
@@ -92,7 +92,7 @@ export const YoureProtected = () => {
                   Damage Protection
                 </p>
                 <p className="text-xl font-bold text-[var(--color-primary)]">
-                  $3M
+                  RM3M
                 </p>
               </div>
               <div className="text-center">
@@ -100,7 +100,7 @@ export const YoureProtected = () => {
                   Liability Insurance
                 </p>
                 <p className="text-xl font-bold text-[var(--color-primary)]">
-                  $1M
+                  RM1M
                 </p>
               </div>
               <div className="text-center">

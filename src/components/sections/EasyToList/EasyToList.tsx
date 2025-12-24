@@ -1,71 +1,119 @@
-interface ListingStep {
-  number: number;
-  icon: string;
-  title: string;
+interface Feature {
+  icon: React.ReactNode;
   description: string;
 }
 
-const listingSteps: ListingStep[] = [
+interface IconProps {
+  size?: number;
+  className?: string;
+}
+
+// Change this value to adjust the size of all icons
+const ICON_SIZE = 22;
+
+const HomeIcon = ({ size = ICON_SIZE, className }: IconProps) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 32 32"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className}
+  >
+    <path d="M4 12L16 4L28 12V26C28 27.1 27.1 28 26 28H6C4.9 28 4 27.1 4 26V12Z" />
+    <path d="M12 28V18H20V28" />
+  </svg>
+);
+
+const ClockIcon = ({ size = ICON_SIZE, className }: IconProps) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 32 32"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className}
+  >
+    <circle cx="16" cy="16" r="12" />
+    <path d="M16 8V16L20 20" />
+    <circle cx="16" cy="4" r="1.5" fill="currentColor" stroke="none" />
+    <path d="M13 3L16 1L19 3" />
+  </svg>
+);
+
+const ChatIcon = ({ size = ICON_SIZE, className }: IconProps) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 32 32"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className}
+  >
+    <path d="M4 6H28V22H18L12 28V22H4V6Z" />
+    <circle cx="10" cy="14" r="1.5" fill="currentColor" stroke="none" />
+    <circle cx="16" cy="14" r="1.5" fill="currentColor" stroke="none" />
+    <circle cx="22" cy="14" r="1.5" fill="currentColor" stroke="none" />
+  </svg>
+);
+
+const features: Feature[] = [
   {
-    number: 1,
-    icon: '🏠',
-    title: 'Tell us about your place',
-    description:
-      'Share some basic info, like where it is and how many guests can stay.',
+    icon: <HomeIcon />,
+    description: 'Create a listing for your place in just a few steps',
   },
   {
-    number: 2,
-    icon: '📸',
-    title: 'Make it stand out',
-    description:
-      "Add 5 or more photos plus a title and description—we'll help you out.",
+    icon: <ClockIcon />,
+    description: 'Go at your own pace, and make changes whenever',
   },
   {
-    number: 3,
-    icon: '✨',
-    title: 'Finish up and publish',
-    description:
-      "Choose if you'd like to start with an experienced guest, set a starting price, and publish.",
+    icon: <ChatIcon />,
+    description: 'Get 1:1 support from experienced hosts at any time',
   },
 ];
 
 export const EasyToList = () => {
   return (
-    <section className="bg-white py-20 md:py-24">
-      <div className="container mx-auto max-w-7xl px-6">
-        <header className="mb-12 text-center">
-          <h2 className="mb-4 text-3xl font-bold text-[var(--color-text-dark)] md:text-4xl lg:text-5xl">
-            It's easy to list on Airbnb
-          </h2>
-          <p className="mx-auto max-w-xl text-lg text-[var(--color-text-muted)]">
-            From sign up to your first guest—here's how listing your place works
-          </p>
-        </header>
+    <section className="bg-white py-16 md:py-24">
+      <div className="container mx-auto max-w-6xl px-6">
+        {/* Heading */}
+        <h2 className="text-text-dark mb-8 text-center text-[32px] leading-tight font-bold tracking-tight md:mb-12 md:text-4xl lg:text-6xl">
+          It's easy to list your home on Airbnb
+        </h2>
 
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {listingSteps.map((step) => (
+        {/* iPhone Mockups */}
+        <div className="relative mx-auto my-24 w-full max-w-md overflow-x-clip py-[25%] md:my-12 md:max-w-lg lg:max-w-xl">
+          <img
+            src="/landing/iphones.avif"
+            alt="Airbnb app showing listing process on two iPhones"
+            className="absolute inset-0 m-auto h-auto w-full scale-150"
+          />
+        </div>
+
+        {/* Features */}
+        <div className="flex flex-col gap-3 md:flex-row md:justify-center md:gap-12">
+          {features.map((feature, index) => (
             <article
-              key={step.number}
-              className="flex flex-col items-center rounded-3xl bg-[var(--color-bg-light)] p-8 text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
+              key={index}
+              className="flex flex-row items-start gap-4 md:flex-col md:items-center md:text-center"
             >
-              {/* Phone Mockup */}
-              <div className="mb-6 flex aspect-[3/4] w-full items-center justify-center rounded-2xl bg-gradient-to-br from-white to-gray-100 shadow-sm">
-                <div className="h-[280px] w-[140px] rounded-3xl bg-gradient-to-b from-gray-900 to-gray-700 p-2 shadow-2xl">
-                  <div className="relative flex h-full w-full flex-col items-center justify-center overflow-hidden rounded-[18px] bg-gradient-to-b from-white to-gray-50">
-                    <div className="absolute top-1.5 left-1/2 h-1.5 w-10 -translate-x-1/2 rounded-full bg-gray-900"></div>
-                    <span className="text-5xl">{step.icon}</span>
-                  </div>
-                </div>
+              {/* Icon Container */}
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-gray-100 text-gray-800">
+                {feature.icon}
               </div>
 
-              <span className="mb-2 inline-flex h-8 w-8 items-center justify-center rounded-full bg-[var(--color-primary)] text-sm font-bold text-white">
-                {step.number}
-              </span>
-              <h3 className="mb-2 text-xl font-semibold text-[var(--color-text-dark)]">
-                {step.title}
-              </h3>
-              <p className="text-base leading-relaxed text-[var(--color-text-muted)]">
-                {step.description}
+              {/* Text */}
+              <p className="text-text-dark text-[17px] leading-tight tracking-tight md:text-lg">
+                <span>{feature.description}</span>
               </p>
             </article>
           ))}
