@@ -30,11 +30,14 @@ export const MobileNavbar = () => {
               }}
               transition={{ duration: 0.2, ease: 'easeOut' }}
             >
-              <img
-                src="/airbnb.png"
-                alt="Airbnb"
-                className="-ml-1 h-8 w-auto"
-              />
+              <div className="flex items-center gap-2">
+                <img
+                  src="/airbnb.png"
+                  alt="Airbnb"
+                  className="-ml-1 h-8 w-auto"
+                />
+                <p className="text-[6px]">temporary</p>
+              </div>
             </motion.div>
           </a>
         </div>

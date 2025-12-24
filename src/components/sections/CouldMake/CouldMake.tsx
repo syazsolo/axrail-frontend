@@ -24,7 +24,7 @@ export const CouldMake = () => {
   const [nights, setNights] = useState(7);
   const [isDragging, setIsDragging] = useState(false);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const nightlyRate = 52;
+  const nightlyRate = 211;
 
   // Displayed earnings that only updates when dragging is done
   const [displayedEarnings, setDisplayedEarnings] = useState(7 * nightlyRate);
@@ -37,9 +37,9 @@ export const CouldMake = () => {
   }, [isDragging, nights, nightlyRate]);
 
   const formatCurrency = (amount: number) => {
-    return new Intl.NumberFormat('en-US', {
+    return new Intl.NumberFormat('en-MY', {
       style: 'currency',
-      currency: 'USD',
+      currency: 'MYR',
       minimumFractionDigits: 0,
       maximumFractionDigits: 0,
     }).format(amount);
@@ -58,8 +58,8 @@ export const CouldMake = () => {
           {/* Left Content */}
           <div className="mx-auto max-w-xl text-center lg:max-w-lg">
             <h1 className="mb-6 text-[40px] leading-[1.1] font-bold tracking-tight md:text-5xl lg:text-[3.5rem]">
-              Your home could make <RollingNumber value={displayedEarnings} />{' '}
-              on Airbnb
+              Your home could make{' '}
+              <RollingNumber value={displayedEarnings} prefix="RM" /> on Airbnb
             </h1>
 
             {/* Nights and rate info - hidden while dragging */}
@@ -69,7 +69,8 @@ export const CouldMake = () => {
                 isDragging ? 'opacity-0' : 'opacity-100',
               )}
             >
-              <p className="text-text-dark mb-1 text-base">
+              <p className="text-text-dark mb-1 text-[17px] font-[530]">
+                {/* TODO - make the dialog to allow the user to change the nights */}
                 <button className="hover:text-text-muted cursor-pointer underline decoration-1 underline-offset-2">
                   {nights} {nightLabel}
                 </button>
@@ -82,7 +83,7 @@ export const CouldMake = () => {
                 Learn how we{' '}
                 <button
                   onClick={() => setIsDialogOpen(true)}
-                  className="text-text-dark hover:text-text-muted cursor-pointer underline decoration-1 underline-offset-2"
+                  className="cursor-pointer underline decoration-1 underline-offset-2"
                 >
                   estimate earnings
                 </button>
@@ -113,28 +114,28 @@ export const CouldMake = () => {
             {/* Price Pins */}
             <div className="pointer-events-none absolute inset-0">
               <span className="text-text-dark absolute top-[18%] left-[22%] rounded-full bg-white px-2.5 py-1.5 text-sm font-semibold shadow-md">
-                $46
+                RM46
               </span>
               <span className="text-text-dark absolute top-[15%] left-[55%] rounded-full bg-white px-2.5 py-1.5 text-sm font-semibold shadow-md">
-                $86
+                RM86
               </span>
               <span className="text-text-dark absolute top-[25%] left-[70%] rounded-full bg-white px-2.5 py-1.5 text-sm font-semibold shadow-md">
-                $126
+                RM126
               </span>
               <span className="text-text-dark absolute top-[35%] left-[45%] rounded-full bg-white px-2.5 py-1.5 text-sm font-semibold shadow-md">
-                $101
+                RM101
               </span>
               <span className="text-text-dark absolute top-[48%] left-[60%] rounded-full bg-white px-2.5 py-1.5 text-sm font-semibold shadow-md">
-                $117
+                RM117
               </span>
               <span className="text-text-dark absolute top-[62%] left-[25%] rounded-full bg-white px-2.5 py-1.5 text-sm font-semibold shadow-md">
-                $386
+                RM386
               </span>
               <span className="text-text-dark absolute top-[55%] left-[72%] rounded-full bg-white px-2.5 py-1.5 text-sm font-semibold shadow-md">
-                $88
+                RM88
               </span>
               <span className="text-text-dark absolute top-[75%] left-[65%] rounded-full bg-white px-2.5 py-1.5 text-sm font-semibold shadow-md">
-                $81
+                RM81
               </span>
             </div>
 
