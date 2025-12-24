@@ -94,7 +94,7 @@ export const EasyToList = () => {
         {/* iPhone Mockups */}
         <div className="relative mx-auto my-24 w-full max-w-md overflow-x-clip py-[25%] md:my-12 md:max-w-lg lg:max-w-xl">
           <img
-            src="/landing/iphones.avif"
+            src="https://a0.muscache.com/im/pictures/canvas/Canvas-1727297260081/original/e97a2325-f789-49df-b474-25c77476d433.jpeg?im_w=2560"
             alt="Airbnb app showing listing process on two iPhones"
             className="absolute inset-0 m-auto h-auto w-full scale-150"
           />
