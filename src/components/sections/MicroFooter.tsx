@@ -1,4 +1,4 @@
-import { Button } from '@/components/ui/Button';
+import { ActionButton } from '@/components/ui/ActionButton';
 
 export const MicroFooter = () => {
   return (
@@ -11,7 +11,9 @@ export const MicroFooter = () => {
           Get answers from an experienced local host.
         </p>
 
-        <Button href="#">Ask a host</Button>
+        <ActionButton href="#" className="mt-0">
+          Ask a host
+        </ActionButton>
       </div>
     </section>
   );

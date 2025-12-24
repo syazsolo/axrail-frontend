@@ -1,5 +1,5 @@
 import { CoHostCard, type CoHostPerson } from '@/components/ui/CoHostCard';
-import { Button } from '@/components/ui/Button';
+import { ActionButton } from '@/components/ui/ActionButton';
 
 const coHosts: CoHostPerson[] = [
   {
@@ -116,15 +116,13 @@ export const CoHost = () => {
       </div>
 
       {/* Find a co-host button */}
-      <div className="container mx-auto mt-8 flex w-full justify-center px-6 md:mt-12 lg:w-90">
-        <Button
-          href="https://www.airbnb.com/co-hosts/results"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Find a co-host
-        </Button>
-      </div>
+      <ActionButton
+        href="https://www.airbnb.com/co-hosts/results"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Find a co-host
+      </ActionButton>
     </section>
   );
 };
