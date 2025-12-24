@@ -15,7 +15,7 @@ export const NotJustHomeowners = () => {
               ✨ New program
             </span>
 
-            <h2 className="mb-6 text-3xl leading-tight font-bold text-[var(--color-text-dark)] md:text-4xl lg:text-5xl">
+            <h2 className="text-title mb-6">
               Not just for homeowners
             </h2>
 

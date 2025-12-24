@@ -86,8 +86,9 @@ export const EasyToList = () => {
     <section className="bg-white py-16 md:py-24">
       <div className="container mx-auto max-w-6xl px-6">
         {/* Heading */}
-        <h2 className="text-text-dark mb-8 text-center text-[32px] leading-tight font-bold tracking-tight md:mb-12 md:text-4xl lg:text-6xl">
-          It's easy to list your home on Airbnb
+        <h2 className="text-title mb-8 text-center md:mb-12">
+          It's easy to list your
+          <br /> home on Airbnb
         </h2>
 
         {/* iPhone Mockups */}

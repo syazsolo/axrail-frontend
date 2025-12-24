@@ -30,7 +30,7 @@ export const Tools = () => {
     <section className="bg-[var(--color-bg-light)] py-20 md:py-24">
       <div className="container mx-auto max-w-7xl px-6">
         <header className="mb-12 text-center">
-          <h2 className="mb-4 text-3xl font-bold text-[var(--color-text-dark)] md:text-4xl lg:text-5xl">
+          <h2 className="text-title mb-4">
             Tools to help you throughout
           </h2>
           <p className="mx-auto max-w-xl text-lg text-[var(--color-text-muted)]">

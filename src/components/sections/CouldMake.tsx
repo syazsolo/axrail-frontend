@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 
-import { EarningsInfoDialog } from '../../ui/EarningsInfoDialog';
-import { NightsSlider } from '../../ui/NightsSlider';
-import { RollingNumber } from '../../ui/RollingNumber';
-import { cn } from '../../../lib/utils';
+import { EarningsInfoDialog } from '../ui/EarningsInfoDialog';
+import { NightsSlider } from '../ui/NightsSlider';
+import { RollingNumber } from '../ui/RollingNumber';
+import { cn } from '../../lib/utils';
 
 const SearchIcon = ({ className }: { className?: string }) => (
   <svg
@@ -57,7 +57,7 @@ export const CouldMake = () => {
         <div className="grid grid-cols-1 items-center gap-6 lg:grid-cols-2 lg:gap-16">
           {/* Left Content */}
           <div className="mx-auto max-w-xl text-center lg:max-w-lg">
-            <h1 className="mb-6 text-[2.6rem] leading-[1.1] font-bold tracking-tight md:text-5xl lg:text-6xl">
+            <h1 className="text-title mb-6 leading-[1.1]">
               Your home could make{' '}
               <RollingNumber value={displayedEarnings} prefix="RM" /> on Airbnb
             </h1>

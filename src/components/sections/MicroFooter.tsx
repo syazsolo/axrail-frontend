@@ -21,7 +21,7 @@ export const MicroFooter = () => {
           </span>
         </div>
 
-        <h2 className="mb-4 text-2xl font-bold text-[var(--color-text-dark)] md:text-3xl">
+        <h2 className="text-title mb-4">
           Still have questions?
         </h2>
         <p className="mb-6 max-w-md text-lg text-[var(--color-text-muted)]">
