@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 
-import { EarningsInfoDialog } from '../../ui/EarningsInfoDialog';
-import { NightsSlider } from '../../ui/NightsSlider';
-import { RollingNumber } from '../../ui/RollingNumber';
-import { cn } from '../../../lib/utils';
+import { EarningsInfoDialog } from '@/components/ui/EarningsInfoDialog';
+import { NightsSlider } from '@/components/ui/NightsSlider';
+import { RollingNumber } from '@/components/ui/RollingNumber';
+import { cn } from '@/lib/utils';
 
 const SearchIcon = ({ className }: { className?: string }) => (
   <svg
@@ -50,14 +50,14 @@ export const CouldMake = () => {
 
   return (
     <section
-      className="flex min-h-[calc(100vh-80px)] items-center overflow-hidden bg-white py-4"
+      className="flex min-h-[calc(100vh-80px)] items-center overflow-hidden bg-white py-4 md:mt-20"
       id="get-started"
     >
       <div className="container mx-auto max-w-7xl px-6">
         <div className="grid grid-cols-1 items-center gap-6 lg:grid-cols-2 lg:gap-16">
           {/* Left Content */}
           <div className="mx-auto max-w-xl text-center lg:max-w-lg">
-            <h1 className="mb-6 text-[2.6rem] leading-[1.1] font-bold tracking-tight md:text-5xl lg:text-6xl">
+            <h1 className="text-title mb-6 text-[2.7rem]! md:text-[3.75rem]!">
               Your home could make{' '}
               <RollingNumber value={displayedEarnings} prefix="RM" /> on Airbnb
             </h1>
@@ -90,18 +90,19 @@ export const CouldMake = () => {
               </p>
             </div>
 
-            {/* Slider */}
-            <NightsSlider
-              value={nights}
-              onChange={setNights}
-              onDragChange={setIsDragging}
-              min={1}
-              max={30}
-              className="mt-12 mb-8"
-            />
+            <div className="mx-auto my-12 w-75">
+              {/* Slider */}
+              <NightsSlider
+                value={nights}
+                onChange={setNights}
+                onDragChange={setIsDragging}
+                min={1}
+                max={30}
+              />
+            </div>
 
             {/* TODO - do the price guesser code */}
-            <div className="flex w-full cursor-pointer items-center gap-2 rounded-full border border-[#ddd] bg-white px-5 py-3 text-left transition-shadow hover:shadow-md">
+            <div className="mx-auto flex w-full max-w-110 cursor-pointer items-center gap-2 rounded-full border border-[#ddd] bg-white px-5 py-3 text-left transition-shadow hover:shadow-md">
               <SearchIcon className="text-[#DE1360]" />
               <div className="flex flex-col">
                 <span className="text-text-dark text-[15px] leading-tight font-bold">

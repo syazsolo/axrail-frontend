@@ -1,6 +1,6 @@
-import { useIsMobile } from '../../hooks/use-is-mobile';
-import { DesktopNavbar } from './DesktopNavbar';
-import { MobileNavbar } from './MobileNavbar';
+import { useIsMobile } from '@/hooks/use-is-mobile';
+import { DesktopNavbar } from '@/components/layout/DesktopNavbar';
+import { MobileNavbar } from '@/components/layout/MobileNavbar';
 
 export const Navbar = () => {
   const isMobile = useIsMobile();

@@ -1,8 +1,8 @@
 import { AnimatePresence, motion } from 'framer-motion';
 
-import { cn } from '../../lib/utils';
+import { cn } from '@/lib/utils';
 import { useEffect } from 'react';
-import { useIsMobile } from '../../hooks/use-is-mobile';
+import { useIsMobile } from '@/hooks/use-is-mobile';
 
 interface EarningsInfoDialogProps {
   isOpen: boolean;
