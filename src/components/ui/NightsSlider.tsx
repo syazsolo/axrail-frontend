@@ -40,16 +40,9 @@ export const NightsSlider = ({
 
   // Calculate popover position based on thumb position
   const getPopoverStyle = useMemo(() => {
-    // Account for thumb width offset at edges
-    const thumbOffset = KNOB_SIZE_PX / 2;
-    const trackWidth = sliderRef.current?.offsetWidth || 0;
-
-    // Calculate actual thumb position
-    const thumbPosition =
-      thumbOffset + ((trackWidth - thumbOffset * 2) * sliderProgress) / 100;
-
+    const halfKnob = KNOB_SIZE_PX / 2;
     return {
-      left: `${thumbPosition}px`,
+      left: `calc(${sliderProgress}% + ${halfKnob}px - ${(sliderProgress * KNOB_SIZE_PX) / 100}px)`,
       transform: `translateX(-50%)`,
     };
   }, [sliderProgress]);
@@ -113,7 +106,7 @@ export const NightsSlider = ({
       <div
         ref={popoverRef}
         className={cn(
-          'absolute -top-18 z-10 rounded-full bg-[#222] px-4 py-2 text-base font-medium whitespace-nowrap text-white shadow-lg transition-opacity duration-150',
+          'absolute -top-22 z-10 rounded-full bg-[#222] px-4 py-2 text-[1.05rem] font-medium whitespace-nowrap text-white shadow-lg transition-opacity duration-150 md:text-[1.2rem]',
           showPopover ? 'opacity-100' : 'pointer-events-none opacity-0',
         )}
         style={getPopoverStyle}
@@ -151,7 +144,11 @@ export const NightsSlider = ({
         onMouseLeave={handleMouseLeave}
         onTouchStart={handleMouseDown}
         onTouchEnd={handleMouseUp}
-        className="absolute top-1/2 left-0 w-full -translate-y-1/2 cursor-pointer appearance-none bg-transparent [&::-moz-range-thumb]:cursor-pointer [&::-moz-range-thumb]:appearance-none [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:border [&::-moz-range-thumb]:border-[#ddd] [&::-moz-range-thumb]:bg-[#f7f7f7] [&::-moz-range-thumb]:shadow-[2px_2px_8px_rgba(0,0,0,0.15)] [&::-moz-range-thumb]:transition-shadow [&::-webkit-slider-thumb]:cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:border [&::-webkit-slider-thumb]:border-[#ddd] [&::-webkit-slider-thumb]:bg-[#f5f5f5] [&::-webkit-slider-thumb]:shadow-[2px_2px_8px_rgba(0,0,0,0.15)] [&::-webkit-slider-thumb]:transition-shadow [&::-webkit-slider-thumb]:hover:shadow-[3px_3px_12px_rgba(0,0,0,0.2)]"
+        className={cn(
+          'absolute top-1/2 left-0 w-full -translate-y-1/2 cursor-pointer appearance-none bg-transparent',
+          '[&::-moz-range-thumb]:bg-bg-light [&::-moz-range-thumb]:cursor-pointer [&::-moz-range-thumb]:appearance-none [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:border [&::-moz-range-thumb]:border-[#ddd] [&::-moz-range-thumb]:shadow-[2px_2px_8px_rgba(0,0,0,0.15)] [&::-moz-range-thumb]:transition-shadow',
+          '[&::-webkit-slider-thumb]:cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:border [&::-webkit-slider-thumb]:border-[#ddd] [&::-webkit-slider-thumb]:bg-[#f5f5f5] [&::-webkit-slider-thumb]:shadow-[2px_2px_8px_rgba(0,0,0,0.15)] [&::-webkit-slider-thumb]:transition-shadow [&::-webkit-slider-thumb]:hover:shadow-[3px_3px_12px_rgba(0,0,0,0.2)]',
+        )}
         style={{
           // Use CSS custom property for dynamic thumb size
           ['--thumb-size' as string]: `${KNOB_SIZE_PX}px`,

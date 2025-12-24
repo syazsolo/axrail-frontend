@@ -15,7 +15,7 @@ function App() {
   return (
     <div className="flex min-h-screen flex-col">
       <Navbar />
-      <main className="flex-1 pt-20">
+      <main className="flex-1">
         <CouldMake />
         <EasyToList />
         <CoHost />
