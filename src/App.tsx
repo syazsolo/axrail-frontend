@@ -23,7 +23,7 @@ function App() {
         {/* <Tools /> */}
         {/* <NotJustHomeowners /> */}
         {/* <QnA /> */}
-        {/* <MicroFooter /> */}
+        <MicroFooter />
       </main>
       <Footer />
     </div>
