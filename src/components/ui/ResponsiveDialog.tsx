@@ -135,7 +135,7 @@ export const ResponsiveDialog = ({
           />
 
           {/* Dialog Container */}
-          <div className="pointer-events-none fixed inset-0 z-50 flex items-center justify-center p-4">
+          <div className="pointer-events-none fixed inset-0 z-50 flex items-center justify-center p-0 md:p-4">
             {/* Dialog Content */}
             <motion.div
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
@@ -143,7 +143,7 @@ export const ResponsiveDialog = ({
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               transition={{ duration: 0.2, ease: 'easeOut' }}
               className={cn(
-                'pointer-events-auto relative flex h-[85vh] w-full max-w-lg flex-col overflow-hidden rounded-4xl bg-white shadow-xl',
+                'pointer-events-auto relative flex h-full w-full flex-col overflow-hidden rounded-none bg-white shadow-xl md:h-[85vh] md:max-w-lg md:rounded-4xl',
                 className,
               )}
               role="dialog"

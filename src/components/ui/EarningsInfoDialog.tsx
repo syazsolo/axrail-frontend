@@ -14,7 +14,6 @@ export const EarningsInfoDialog = ({
       isOpen={isOpen}
       onClose={onClose}
       title="How we estimate your earning potential"
-      className="max-w-lg"
     >
       <div className="text-text-dark space-y-4 text-[17.5px] leading-tight tracking-tight">
         <p>
