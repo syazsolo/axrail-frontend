@@ -6,6 +6,7 @@ import Footer from '@/components/layout/Footer';
 import MicroFooter from '@/components/sections/MicroFooter';
 // Layout components
 import Navbar from '@/components/layout/Navbar';
+import NotJustHomeowners from '@/components/sections/NotJustHomeowners';
 import QnA from '@/components/sections/QnA';
 
 function App() {
@@ -18,7 +19,8 @@ function App() {
         <CoHost />
         {/* <YoureProtected /> */}
         {/* <Tools /> */}
-        {/* <NotJustHomeowners /> */}
+        <div className="mx-auto block h-[1px] w-full max-w-5xl bg-gray-200 px-4" />
+        <NotJustHomeowners />
         <QnA />
         <MicroFooter />
       </main>
