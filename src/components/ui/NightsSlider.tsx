@@ -38,14 +38,28 @@ export const NightsSlider = ({
   // Smart singular/plural for "night(s)"
   const nightLabel = value === 1 ? 'night' : 'nights';
 
-  // Calculate popover position based on thumb position
-  const getPopoverStyle = useMemo(() => {
+  // Calculate thumb position correction
+  // Matches native range input behavior:
+  // The thumb center should travel from (KnobSize/2) to (Width - KnobSize/2).
+  // Formula: Percent * (Width - KnobSize) + HalfKnob
+  // CSS Calc: Percent% - (Percent * KnobSize / 100) + HalfKnob
+  // This works for ANY slider width purely with CSS.
+  const thumbPositionStyle = useMemo(() => {
     const halfKnob = KNOB_SIZE_PX / 2;
+    // The exact center position of the thumb
+    const centerPos = `calc(${sliderProgress}% + ${halfKnob}px - ${(sliderProgress * KNOB_SIZE_PX) / 100}px)`;
     return {
-      left: `calc(${sliderProgress}% + ${halfKnob}px - ${(sliderProgress * KNOB_SIZE_PX) / 100}px)`,
-      transform: `translateX(-50%)`,
+      left: centerPos,
     };
   }, [sliderProgress]);
+
+  // Calculate popover position based on thumb position
+  const getPopoverStyle = useMemo(() => {
+    return {
+      left: thumbPositionStyle.left,
+      transform: `translateX(-50%)`,
+    };
+  }, [thumbPositionStyle]);
 
   // Show popover during drag or hover
   useEffect(() => {
@@ -108,6 +122,8 @@ export const NightsSlider = ({
         className={cn(
           'absolute -top-22 z-10 rounded-full bg-[#222] px-4 py-2 text-[1.05rem] font-medium whitespace-nowrap text-white shadow-lg transition-opacity duration-150 md:text-[1.2rem]',
           showPopover ? 'opacity-100' : 'pointer-events-none opacity-0',
+          // Add transition for movement when not dragging
+          !isDragging && 'transition-[left] duration-300 ease-out',
         )}
         style={getPopoverStyle}
       >
@@ -124,13 +140,31 @@ export const NightsSlider = ({
         >
           {/* Filled track */}
           <div
-            className="bg-primary absolute top-0 left-0 h-full rounded-full"
+            className={cn(
+              'bg-primary absolute top-0 left-0 h-full rounded-full',
+              // Add transition for width when not dragging
+              !isDragging && 'transition-[width] duration-300 ease-out',
+            )}
             style={{ width: `${sliderProgress}%` }}
           />
         </div>
       </div>
 
-      {/* Range input */}
+      {/* Visual Thumb (replaces native thumb appearance) */}
+      <div
+        className={cn(
+          'pointer-events-none absolute top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#ddd] bg-[#f5f5f5] shadow-[2px_2px_8px_rgba(0,0,0,0.15)] transition-shadow hover:shadow-[3px_3px_12px_rgba(0,0,0,0.2)]',
+          // Add transition for left position when not dragging
+          !isDragging && 'transition-[left] duration-300 ease-out',
+        )}
+        style={{
+          left: thumbPositionStyle.left,
+          width: `${KNOB_SIZE_PX}px`,
+          height: `${KNOB_SIZE_PX}px`,
+        }}
+      />
+
+      {/* Range input (Invisible but interactive) */}
       <input
         ref={sliderRef}
         type="range"
@@ -145,26 +179,10 @@ export const NightsSlider = ({
         onTouchStart={handleMouseDown}
         onTouchEnd={handleMouseUp}
         className={cn(
-          'absolute top-1/2 left-0 w-full -translate-y-1/2 cursor-pointer appearance-none bg-transparent',
-          '[&::-moz-range-thumb]:bg-bg-light [&::-moz-range-thumb]:cursor-pointer [&::-moz-range-thumb]:appearance-none [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:border [&::-moz-range-thumb]:border-[#ddd] [&::-moz-range-thumb]:shadow-[2px_2px_8px_rgba(0,0,0,0.15)] [&::-moz-range-thumb]:transition-shadow',
-          '[&::-webkit-slider-thumb]:cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:border [&::-webkit-slider-thumb]:border-[#ddd] [&::-webkit-slider-thumb]:bg-[#f5f5f5] [&::-webkit-slider-thumb]:shadow-[2px_2px_8px_rgba(0,0,0,0.15)] [&::-webkit-slider-thumb]:transition-shadow [&::-webkit-slider-thumb]:hover:shadow-[3px_3px_12px_rgba(0,0,0,0.2)]',
+          'absolute top-1/2 left-0 z-20 w-full -translate-y-1/2 cursor-pointer appearance-none bg-transparent opacity-0',
         )}
-        style={{
-          // Use CSS custom property for dynamic thumb size
-          ['--thumb-size' as string]: `${KNOB_SIZE_PX}px`,
-        }}
         aria-label={`Number of ${nightLabel}`}
       />
-      <style>{`
-        input[type="range"]::-webkit-slider-thumb {
-          width: ${KNOB_SIZE_PX}px;
-          height: ${KNOB_SIZE_PX}px;
-        }
-        input[type="range"]::-moz-range-thumb {
-          width: ${KNOB_SIZE_PX}px;
-          height: ${KNOB_SIZE_PX}px;
-        }
-      `}</style>
     </div>
   );
 };

@@ -50,7 +50,8 @@ export const NightsSelectionDialog = ({
   };
 
   const handleSave = () => {
-    onUpdate(localNights);
+    const clamped = Math.max(1, Math.min(30, localNights || 1));
+    onUpdate(clamped);
     onClose();
   };
 
@@ -70,7 +71,7 @@ export const NightsSelectionDialog = ({
         </div>
       }
     >
-      <div className="flex flex-col items-center pt-4 pb-8">
+      <div className="flex flex-col items-center py-4">
         <div className="flex items-center gap-10">
           <CircleButton
             onClick={handleDec}
@@ -88,11 +89,26 @@ export const NightsSelectionDialog = ({
               </svg>
             }
           />
-          <div className="flex w-[100px] flex-col items-center gap-2">
-            <div className="text-text-dark w-full rounded-lg border border-gray-300 py-3 text-center text-3xl font-normal">
-              {localNights}
-            </div>
-            <span className="text-text-dark text-xs font-normal">Nights</span>
+          <div className="flex w-25 flex-col items-center gap-2">
+            <input
+              type="number"
+              min={1}
+              max={30}
+              value={localNights === 0 ? '' : localNights}
+              onChange={(e) => {
+                const val =
+                  e.target.value === '' ? 0 : parseInt(e.target.value);
+                setLocalNights(isNaN(val) ? 0 : val);
+              }}
+              onBlur={() => {
+                let val = localNights;
+                if (val < 1) val = 1;
+                if (val > 30) val = 30;
+                setLocalNights(val);
+              }}
+              className="text-text-dark w-full [appearance:textfield] rounded-lg border border-gray-300 py-3 text-center text-3xl font-normal focus:border-3 focus:border-black focus:outline-none [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
+            />
+            <span className="text-text-dark text-sm font-semibold">Nights</span>
           </div>
           <CircleButton
             onClick={handleInc}
@@ -113,7 +129,7 @@ export const NightsSelectionDialog = ({
           />
         </div>
 
-        <p className="text-text-muted mt-8 max-w-[280px] text-center text-base leading-snug">
+        <p className="text-text-muted mt-4 text-center text-base leading-snug">
           Homes available all month average 22 nights booked
         </p>
       </div>
