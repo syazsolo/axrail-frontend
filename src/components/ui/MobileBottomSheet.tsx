@@ -13,6 +13,8 @@ interface MobileBottomSheetProps {
   maxHeightGap?: string;
   /** Additional class names for the content container */
   className?: string;
+  /** Content to display fixed at the bottom of the sheet */
+  footer?: ReactNode;
 }
 
 export const MobileBottomSheet = ({
@@ -21,6 +23,7 @@ export const MobileBottomSheet = ({
   children,
   maxHeightGap = 'max(24px, env(safe-area-inset-top))',
   className,
+  footer,
 }: MobileBottomSheetProps) => {
   // Prevent body scroll when sheet is open
   useEffect(() => {
@@ -98,6 +101,7 @@ export const MobileBottomSheet = ({
                 <div className="dialog-scrollbar flex-1 overflow-y-auto">
                   {children}
                 </div>
+                {footer && <div className="shrink-0">{footer}</div>}
               </div>
             </motion.div>
           </div>

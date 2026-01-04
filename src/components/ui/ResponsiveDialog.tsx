@@ -16,6 +16,15 @@ interface ResponsiveDialogProps {
    * Defaults to safe-area-inset-top or 24px.
    */
   mobileMaxHeightGap?: string;
+  /** Content to display fixed at the bottom of the dialog */
+  footer?: ReactNode;
+  /**
+   * Layout variant.
+   * - 'default': Standard dialog with title in the header.
+   * - 'standalone': Minimal header, large title in the body.
+   * @default 'default'
+   */
+  variant?: 'default' | 'standalone';
 }
 
 const CloseButton = ({ onClick }: { onClick: () => void }) => (
@@ -53,6 +62,8 @@ export const ResponsiveDialog = ({
   children,
   className,
   mobileMaxHeightGap,
+  footer,
+  variant = 'default',
 }: ResponsiveDialogProps) => {
   const isMobile = useIsMobile(500);
 
@@ -97,16 +108,27 @@ export const ResponsiveDialog = ({
         onClose={onClose}
         maxHeightGap={mobileMaxHeightGap}
         className={className}
+        footer={footer}
       >
         <div className="flex h-full flex-col pt-[max(0rem,env(safe-area-inset-top))]">
           {/* Mobile Header */}
-          <div className="flex shrink-0 items-start justify-between p-4">
+          <div
+            className={cn(
+              'flex shrink-0 items-center justify-between p-4',
+              variant === 'default' && title && 'border-b border-gray-100',
+            )}
+          >
             <CloseButton onClick={onClose} />
+            {variant === 'default' && title && (
+              <div className="text-text-dark absolute left-1/2 -translate-x-1/2 text-base font-semibold">
+                {title}
+              </div>
+            )}
           </div>
 
           {/* Content */}
           <div className="flex-1 overflow-y-auto px-6 pb-8">
-            {title && (
+            {variant === 'standalone' && title && (
               <div className="text-text-dark mb-4 text-[34px] leading-[1.1] font-semibold tracking-tighter">
                 {title}
               </div>
@@ -143,7 +165,7 @@ export const ResponsiveDialog = ({
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               transition={{ duration: 0.2, ease: 'easeOut' }}
               className={cn(
-                'pointer-events-auto relative flex h-full w-full flex-col overflow-hidden rounded-none bg-white shadow-xl md:h-[85vh] md:max-w-lg md:rounded-4xl',
+                'pointer-events-auto relative flex h-full w-full flex-col overflow-hidden rounded-none bg-white shadow-xl md:h-auto md:max-h-[85vh] md:max-w-lg md:rounded-2xl',
                 className,
               )}
               role="dialog"
@@ -151,19 +173,32 @@ export const ResponsiveDialog = ({
               onClick={(e) => e.stopPropagation()}
             >
               {/* Desktop Header */}
-              <div className="flex shrink-0 items-start justify-between p-4">
+              <div
+                className={cn(
+                  'relative flex shrink-0 items-center justify-between p-4',
+                  variant === 'default' && title && 'border-b border-gray-100',
+                )}
+              >
                 <CloseButton onClick={onClose} />
+                {variant === 'default' && title && (
+                  <div className="text-text-dark absolute left-1/2 -translate-x-1/2 text-base font-bold">
+                    {title}
+                  </div>
+                )}
               </div>
 
               {/* Content */}
-              <div className="dialog-scrollbar flex-1 overflow-y-auto px-8 pb-12">
-                {title && (
+              <div className="dialog-scrollbar flex-1 overflow-y-auto px-6 py-6">
+                {variant === 'standalone' && title && (
                   <div className="text-text-dark mb-4 text-[34px] leading-[1.1] font-semibold tracking-tighter">
                     {title}
                   </div>
                 )}
                 {children}
               </div>
+
+              {/* Footer */}
+              {footer && <div className="shrink-0">{footer}</div>}
             </motion.div>
           </div>
         </>
