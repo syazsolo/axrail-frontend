@@ -9,6 +9,7 @@ import Navbar from '@/components/layout/Navbar';
 import NotJustHomeowners from '@/components/sections/NotJustHomeowners';
 import QnA from '@/components/sections/QnA';
 import Tools from '@/components/sections/Tools';
+import YoureProtected from '@/components/sections/YoureProtected';
 
 function App() {
   return (
@@ -18,7 +19,7 @@ function App() {
         <CouldMake />
         <EasyToList />
         <CoHost />
-        {/* <YoureProtected /> */}
+        <YoureProtected />
         <Tools />
         <div className="mx-auto block h-px w-full max-w-5xl bg-gray-200 px-4" />
         <NotJustHomeowners />
