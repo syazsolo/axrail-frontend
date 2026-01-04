@@ -23,7 +23,7 @@ const SearchIcon = ({ className }: { className?: string }) => (
 export const CouldMake = () => {
   const [nights, setNights] = useState(7);
   const [isDragging, setIsDragging] = useState(false);
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [activeDialog, setActiveDialog] = useState<'earnings' | null>(null);
   const nightlyRate = 211;
 
   // Displayed earnings that only updates when dragging is done
@@ -82,7 +82,7 @@ export const CouldMake = () => {
               <p className="text-text-muted mb-6 text-[14px]">
                 Learn how we{' '}
                 <button
-                  onClick={() => setIsDialogOpen(true)}
+                  onClick={() => setActiveDialog('earnings')}
                   className="cursor-pointer underline decoration-1 underline-offset-2"
                 >
                   estimate earnings
@@ -183,8 +183,8 @@ export const CouldMake = () => {
 
       {/* Earnings Info Dialog */}
       <EarningsInfoDialog
-        isOpen={isDialogOpen}
-        onClose={() => setIsDialogOpen(false)}
+        isOpen={activeDialog === 'earnings'}
+        onClose={() => setActiveDialog(null)}
       />
     </section>
   );
