@@ -127,7 +127,7 @@ export const ResponsiveDialog = ({
           </div>
 
           {/* Content */}
-          <div className="flex-1 overflow-y-auto px-6 pb-8">
+          <div className={cn('flex-1 overflow-y-auto px-6', !footer && 'pb-8')}>
             {variant === 'standalone' && title && (
               <div className="text-text-dark mb-4 text-[34px] leading-[1.1] font-semibold tracking-tighter">
                 {title}
@@ -188,7 +188,7 @@ export const ResponsiveDialog = ({
               </div>
 
               {/* Content */}
-              <div className="dialog-scrollbar flex-1 overflow-y-auto px-6 py-6">
+              <div className="dialog-scrollbar flex-1 overflow-y-auto px-6">
                 {variant === 'standalone' && title && (
                   <div className="text-text-dark mb-4 text-[34px] leading-[1.1] font-semibold tracking-tighter">
                     {title}

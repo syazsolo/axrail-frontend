@@ -21,7 +21,7 @@ const CircleButton = ({
   <button
     onClick={onClick}
     disabled={disabled}
-    className="border-text-placeholder hover:border-text-dark disabled:border-text-placeholder/30 disabled:text-text-placeholder/30 flex h-12 w-12 cursor-pointer items-center justify-center rounded-full border bg-white transition-all active:scale-95 disabled:pointer-events-none"
+    className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-full border border-gray-300 bg-white text-gray-500 transition-all hover:border-black hover:text-black active:scale-95 disabled:pointer-events-none disabled:border-gray-100 disabled:text-gray-200"
   >
     {icon}
   </button>
@@ -63,15 +63,15 @@ export const NightsSelectionDialog = ({
         <div className="border-t border-gray-100 p-6">
           <button
             onClick={handleSave}
-            className="bg-text-dark w-full cursor-pointer rounded-lg py-3.5 text-base font-semibold text-white transition-transform active:scale-[0.98]"
+            className="bg-text-dark w-full cursor-pointer rounded-lg py-3.5 text-base font-semibold text-white transition-transform hover:bg-black active:scale-[0.98]"
           >
             Update your estimate
           </button>
         </div>
       }
     >
-      <div className="flex flex-col items-center py-4">
-        <div className="flex items-center gap-6">
+      <div className="flex flex-col items-center pt-4 pb-8">
+        <div className="flex items-center gap-10">
           <CircleButton
             onClick={handleDec}
             disabled={localNights <= 1}
@@ -82,17 +82,17 @@ export const NightsSelectionDialog = ({
                 viewBox="0 0 32 32"
                 fill="none"
                 stroke="currentColor"
-                strokeWidth="3"
+                strokeWidth="2"
               >
                 <path d="M26 16H6" />
               </svg>
             }
           />
-          <div className="flex w-32 flex-col items-center gap-1">
-            <div className="border-text-placeholder w-full rounded-lg border py-3 text-center text-3xl font-normal">
+          <div className="flex w-[100px] flex-col items-center gap-2">
+            <div className="text-text-dark w-full rounded-lg border border-gray-300 py-3 text-center text-3xl font-normal">
               {localNights}
             </div>
-            <span className="text-text-dark text-xs font-semibold">Nights</span>
+            <span className="text-text-dark text-xs font-normal">Nights</span>
           </div>
           <CircleButton
             onClick={handleInc}
@@ -104,7 +104,7 @@ export const NightsSelectionDialog = ({
                 viewBox="0 0 32 32"
                 fill="none"
                 stroke="currentColor"
-                strokeWidth="3"
+                strokeWidth="2"
               >
                 <path d="M26 16H6" />
                 <path d="M16 26V6" />
@@ -113,7 +113,7 @@ export const NightsSelectionDialog = ({
           />
         </div>
 
-        <p className="text-text-muted mt-8 text-center text-base font-[400] text-gray-500">
+        <p className="text-text-muted mt-8 max-w-[280px] text-center text-base leading-snug">
           Homes available all month average 22 nights booked
         </p>
       </div>
