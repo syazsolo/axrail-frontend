@@ -8,6 +8,7 @@ import MicroFooter from '@/components/sections/MicroFooter';
 import Navbar from '@/components/layout/Navbar';
 import NotJustHomeowners from '@/components/sections/NotJustHomeowners';
 import QnA from '@/components/sections/QnA';
+import Tools from '@/components/sections/Tools';
 
 function App() {
   return (
@@ -18,8 +19,8 @@ function App() {
         <EasyToList />
         <CoHost />
         {/* <YoureProtected /> */}
-        {/* <Tools /> */}
-        <div className="mx-auto block h-[1px] w-full max-w-5xl bg-gray-200 px-4" />
+        <Tools />
+        <div className="mx-auto block h-px w-full max-w-5xl bg-gray-200 px-4" />
         <NotJustHomeowners />
         <QnA />
         <MicroFooter />

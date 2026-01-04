@@ -93,6 +93,16 @@ body {
 
 @media (min-width: 1024px) {
   .text-title {
-    font-size: 4.375rem;
+    font-size: 4.175rem;
   }
+}
+
+/* Tools section scrollbar hide */
+.tools-scroll-container {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.tools-scroll-container::-webkit-scrollbar {
+  display: none;
 }
