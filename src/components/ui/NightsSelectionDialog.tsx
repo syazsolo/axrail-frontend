@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
+
 import { ResponsiveDialog } from '@/components/ui/ResponsiveDialog';
 
 interface NightsSelectionDialogProps {
@@ -20,7 +21,7 @@ const CircleButton = ({
   <button
     onClick={onClick}
     disabled={disabled}
-    className="border-text-placeholder hover:border-text-dark disabled:border-text-placeholder/30 disabled:text-text-placeholder/30 flex h-12 w-12 items-center justify-center rounded-full border bg-white transition-all active:scale-95 disabled:pointer-events-none"
+    className="border-text-placeholder hover:border-text-dark disabled:border-text-placeholder/30 disabled:text-text-placeholder/30 flex h-12 w-12 cursor-pointer items-center justify-center rounded-full border bg-white transition-all active:scale-95 disabled:pointer-events-none"
   >
     {icon}
   </button>
@@ -62,7 +63,7 @@ export const NightsSelectionDialog = ({
         <div className="border-t border-gray-100 p-6">
           <button
             onClick={handleSave}
-            className="bg-text-dark w-full rounded-lg py-3.5 text-base font-semibold text-white transition-transform active:scale-[0.98]"
+            className="bg-text-dark w-full cursor-pointer rounded-lg py-3.5 text-base font-semibold text-white transition-transform active:scale-[0.98]"
           >
             Update your estimate
           </button>

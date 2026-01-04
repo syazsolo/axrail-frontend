@@ -255,10 +255,10 @@ export const QnA = () => {
                 <div className="space-y-8 pb-8 text-[18px]">
                   {category.items.map((item, index) => (
                     <div key={index}>
-                      <h3 className="mb-1 leading-tight font-semibold tracking-tight text-gray-600">
+                      <h3 className="mb-1 leading-tight font-semibold text-gray-600">
                         {item.question}
                       </h3>
-                      <p className="leading-tight tracking-tight text-gray-500">
+                      <p className="leading-tight text-gray-500">
                         {item.answer}
                       </p>
                     </div>

@@ -181,7 +181,7 @@ export const ResponsiveDialog = ({
               >
                 <CloseButton onClick={onClose} />
                 {variant === 'default' && title && (
-                  <div className="text-text-dark absolute left-1/2 -translate-x-1/2 text-base font-bold">
+                  <div className="text-text-dark absolute left-1/2 -translate-x-1/2 text-[18px] font-bold">
                     {title}
                   </div>
                 )}

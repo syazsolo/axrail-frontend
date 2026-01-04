@@ -58,10 +58,10 @@ export const Tools = () => {
               </div>
 
               {/* Text Content */}
-              <h3 className="text-text-dark mb-1 text-lg font-semibold tracking-tight md:text-xl">
+              <h3 className="text-text-dark mb-1 text-lg font-semibold md:text-xl">
                 {tool.title}
               </h3>
-              <p className="text-center text-[15px] tracking-tight text-gray-500 md:text-base">
+              <p className="text-center text-[15px] text-gray-500 md:text-base">
                 {tool.description}
               </p>
             </article>

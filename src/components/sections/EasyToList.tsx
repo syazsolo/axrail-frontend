@@ -113,7 +113,7 @@ export const EasyToList = () => {
               </div>
 
               {/* Text */}
-              <p className="text-text-dark text-[17px] leading-tight tracking-tight md:text-lg">
+              <p className="text-text-dark text-[17px] leading-tight md:text-lg">
                 <span>{feature.description}</span>
               </p>
             </article>

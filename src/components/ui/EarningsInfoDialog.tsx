@@ -16,7 +16,7 @@ export const EarningsInfoDialog = ({
       title="How we estimate your earning potential"
       variant="standalone"
     >
-      <div className="text-text-dark space-y-4 text-[17.5px] leading-tight tracking-tight">
+      <div className="text-text-dark space-y-4 text-[17.5px] leading-tight">
         <p>
           To estimate your earnings, we review the past 12 months of booking
           data from similar Airbnb listings. We choose these listings based on

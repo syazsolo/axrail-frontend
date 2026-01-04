@@ -17,7 +17,7 @@ export const NotJustHomeowners = () => {
             <h2 className="text-title !md:text-[2.5rem] mb-4 !text-[2rem] leading-tight">
               Hosting isn't only for homeowners
             </h2>
-            <p className="mb-4 text-[19px] tracking-tight text-gray-500">
+            <p className="mb-4 text-[19px] text-gray-500">
               Airbnb-friendly apartments make it easy for you to rent, host, and
               earn extra income when you're away.
             </p>
