@@ -17,11 +17,11 @@ export const DesktopNavbar = () => {
   return (
     <nav
       className={cn(
-        'fixed top-0 right-0 left-0 z-50 w-full bg-white/90 backdrop-blur-sm',
+        'fixed top-0 right-0 left-0 z-50 w-full bg-white/90 pt-[env(safe-area-inset-top)] backdrop-blur-sm',
         isScrolled && 'border-border-light border-b',
       )}
     >
-      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between">
+      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between pr-[max(1rem,env(safe-area-inset-right))] pl-[max(1rem,env(safe-area-inset-left))]">
         <a
           href="/"
           className="text-primary -ml-1 flex items-center transition-opacity hover:opacity-80"
