@@ -18,13 +18,16 @@ export const ActionButton = ({
   className = '',
   onClick,
 }: ActionButtonProps) => {
-  const baseClasses =
+  const buttonBaseClasses =
     'w-full rounded-full bg-gray-900 px-8 py-3 text-center text-base font-semibold text-white transition-all hover:bg-gray-800 lg:text-xl';
 
-  const combinedClasses = cn(baseClasses, className);
+  const wrapperBaseClasses =
+    'container mx-auto mt-8 flex w-full justify-center px-6 md:mt-12 lg:w-90';
+
+  const wrapperClasses = cn(wrapperBaseClasses, className);
 
   const buttonProps = {
-    className: combinedClasses,
+    className: buttonBaseClasses,
     onClick,
   };
 
@@ -40,7 +43,7 @@ export const ActionButton = ({
   };
 
   return (
-    <div className="container mx-auto mt-8 flex w-full justify-center px-6 md:mt-12 lg:w-90">
+    <div className={wrapperClasses}>
       <Content />
     </div>
   );

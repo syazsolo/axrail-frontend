@@ -83,7 +83,7 @@ export const CoHost = () => {
         <div className="relative left-1/2 w-[130vw] -translate-x-1/2">
           <div className="grid grid-cols-2 gap-4 px-4">
             {coHosts.slice(0, 4).map((host) => (
-              <CoHostCard host={host} />
+              <CoHostCard key={host.id} host={host} />
             ))}
           </div>
         </div>

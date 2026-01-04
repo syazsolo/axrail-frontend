@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import { EarningsInfoDialog } from '@/components/ui/EarningsInfoDialog';
+import { NightsSelectionDialog } from '@/components/ui/NightsSelectionDialog';
 import { NightsSlider } from '@/components/ui/NightsSlider';
 import { RollingNumber } from '@/components/ui/RollingNumber';
 import { cn } from '@/lib/utils';
@@ -23,7 +24,9 @@ const SearchIcon = ({ className }: { className?: string }) => (
 export const CouldMake = () => {
   const [nights, setNights] = useState(7);
   const [isDragging, setIsDragging] = useState(false);
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [activeDialog, setActiveDialog] = useState<
+    'earnings' | 'nights' | null
+  >(null);
   const nightlyRate = 211;
 
   // Displayed earnings that only updates when dragging is done
@@ -71,7 +74,10 @@ export const CouldMake = () => {
             >
               <p className="text-text-dark mb-1 text-[17px] font-[530]">
                 {/* TODO - make the dialog to allow the user to change the nights */}
-                <button className="hover:text-text-muted cursor-pointer underline decoration-1 underline-offset-2">
+                <button
+                  onClick={() => setActiveDialog('nights')}
+                  className="hover:text-text-muted cursor-pointer underline decoration-1 underline-offset-2"
+                >
                   {nights} {nightLabel}
                 </button>
                 <span className="mx-1">·</span>
@@ -82,7 +88,7 @@ export const CouldMake = () => {
               <p className="text-text-muted mb-6 text-[14px]">
                 Learn how we{' '}
                 <button
-                  onClick={() => setIsDialogOpen(true)}
+                  onClick={() => setActiveDialog('earnings')}
                   className="cursor-pointer underline decoration-1 underline-offset-2"
                 >
                   estimate earnings
@@ -183,8 +189,16 @@ export const CouldMake = () => {
 
       {/* Earnings Info Dialog */}
       <EarningsInfoDialog
-        isOpen={isDialogOpen}
-        onClose={() => setIsDialogOpen(false)}
+        isOpen={activeDialog === 'earnings'}
+        onClose={() => setActiveDialog(null)}
+      />
+
+      {/* Nights Selection Dialog */}
+      <NightsSelectionDialog
+        isOpen={activeDialog === 'nights'}
+        onClose={() => setActiveDialog(null)}
+        nights={nights}
+        onUpdate={setNights}
       />
     </section>
   );
