@@ -54,7 +54,7 @@ export const ResponsiveDialog = ({
   className,
   mobileMaxHeightGap,
 }: ResponsiveDialogProps) => {
-  const isMobile = useIsMobile();
+  const isMobile = useIsMobile(500);
 
   // Desktop: Prevent body scroll when dialog is open
   // MobileBottomSheet handles this internally for mobile
