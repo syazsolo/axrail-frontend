@@ -36,9 +36,7 @@ export const Tools = () => {
       <div className="mx-auto max-w-6xl">
         {/* Heading */}
         <h2 className="text-title mb-10 px-6 text-center md:mb-14">
-          All the tools you need
-          <br />
-          to host, all in one app
+          All the tools you need to host, all in one app
         </h2>
 
         {/* Tools Carousel - Scrollable on mobile/tablet, grid on desktop */}
